@@ -1,11 +1,11 @@
 theta1 = 0.05;%rand() * 10 / 180 * pi;
-theta2 = 0.05;%rand() * 10 / 180 * pi;
-n = 0.95;
+theta2 = 0.12;%rand() * 10 / 180 * pi;
+n = 0.9;
 
 w1 = 0.15;
-w2 = 0.30;
+w2 = 0.32;
 
-t = 0 : 0.001 : 100;
+t = 0 : 0.1 : 1000;
 N = length(t);
 alpha1 = w1 * t;
 alpha2 = w2 * t;
@@ -20,15 +20,15 @@ for i = 100 : N
       R = [cos(alpha), -sin(alpha), 0
           sin(alpha), cos(alpha), 0
           0, 0, 1];
-       nn1 = R * n1
+       nn1 = R * n1;
        
-       r2 = refract(r1, nn1, n)
+       r2 = refract(r1, nn1, n);
        
       alpha = alpha2(i);
       R = [cos(alpha), -sin(alpha), 0
           sin(alpha), cos(alpha), 0
           0, 0, 1];
-       nn2 = R * n2
+       nn2 = R * n2;
      
        r3 = refract(r2, nn2, 1/n)
        
@@ -36,13 +36,9 @@ for i = 100 : N
        r4 = refract(r3, nn3, n);
        
        r4 = r4 / norm(r4);
-       
        target(:, i) = r4;
-%       d = cross(r1, nn1);
-%       d = d / norm(d);
-%       
-%       beta1 = acos(dot(r1, nn1) / (norm(r1) * norm(nn1)) );
-%       beta2 = asin(sin(beta1) / n);
+
 end
 
+plot(target(1,:), target(2, :));
 
