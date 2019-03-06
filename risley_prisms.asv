@@ -1,0 +1,21 @@
+theta1 = 0.05;%rand() * 10 / 180 * pi;
+theta2 = 0.05;%rand() * 10 / 180 * pi;
+n = 0.8;
+
+w1 = 0.15;
+w2 = 0.30;
+
+t = 0 : 0.001 : 100;
+N = length(t);
+alpha1 = w1 * t;
+alpha2 = w2 * t;
+
+r1 = [0, 0, 1];
+n1 = [-sin(theta1), 0, cos(theta1)];
+for i = 1 : N
+      alpha = alpha1(i);
+      R = [cos(alpha), sin(alpha), 0
+          -sin]
+end
+
+
