@@ -1,11 +1,11 @@
-function [x, y] = risley_prisms(K, M, delta_alpha)
+function [x, y] = risley_prisms(theta1, K, M, delta_alpha)
 
 % K = K;
 % M = 0;
 alpha1_init = 0;
 alpha2_init = delta_alpha;
 
-theta1 = 0.1;%rand() * 10 / 180 * pi;
+%theta1 = 0.1;%rand() * 10 / 180 * pi;
 theta2 = K * theta1;%rand() * 10 / 180 * pi;
 n = 0.6;
 

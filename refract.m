@@ -12,7 +12,7 @@ function r2 = refract(r1, n1, n)
       axis_angle = zeros(1, 4);
       axis_angle(1:3) = d';
       axis_angle(4) = beta2;
-      R = axang2rotm(axis_angle)
+      R = axang2rotm(axis_angle);
       r2 = R * r1;
 
 end
