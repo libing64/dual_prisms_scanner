@@ -1,21 +1,28 @@
-theta1 = 0.05;%rand() * 10 / 180 * pi;
-theta2 = 0.12;%rand() * 10 / 180 * pi;
-n = 0.9;
+function [x, y] = risley_prisms(K, M, delta_alpha)
 
-w1 = 0.15;
-w2 = 0.32;
+% K = K;
+% M = 0;
+alpha1_init = 0;
+alpha2_init = delta_alpha;
+
+theta1 = 0.1;%rand() * 10 / 180 * pi;
+theta2 = K * theta1;%rand() * 10 / 180 * pi;
+n = 0.6;
+
+w1 = 1.5;
+w2 = M * w1;
 
 t = 0 : 0.1 : 1000;
 N = length(t);
-alpha1 = w1 * t;
-alpha2 = w2 * t;
+alpha1 = w1 * t + alpha1_init;
+alpha2 = w2 * t + alpha2_init;
 
 r1 = [0, 0, 1]';
 n1 = [-sin(theta1), 0, cos(theta1)]';
 n2 = [-sin(theta2), 0, cos(theta2)]';
 
 target = zeros(3, N);
-for i = 100 : N
+for i = 1 : N
       alpha = alpha1(i);
       R = [cos(alpha), -sin(alpha), 0
           sin(alpha), cos(alpha), 0
@@ -30,7 +37,7 @@ for i = 100 : N
           0, 0, 1];
        nn2 = R * n2;
      
-       r3 = refract(r2, nn2, 1/n)
+       r3 = refract(r2, nn2, 1/n);
        
        nn3 = [0, 0, 1]';
        r4 = refract(r3, nn3, n);
@@ -39,6 +46,8 @@ for i = 100 : N
        target(:, i) = r4;
 
 end
-
-plot(target(1,:), target(2, :));
+x = target(1, :);
+y = target(2, :);
+%plot(target(1,:), target(2, :));
+%axis equal;
 
