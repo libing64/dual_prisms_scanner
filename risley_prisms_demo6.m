@@ -13,10 +13,10 @@ for i = 1 : length(KK)
         plot(x, y, 'color', rand(1, 3));
         hold off;
         axis equal;
-        stitle = sprintf('K = %f, theta_1 = %f,  M = %f', K, theta1 * 180 / pi,  M);
+        stitle = sprintf('K = %.1f, theta_1 = %.1f_M = %.1f', K, theta1 * 180 / pi,  M);
         title(stitle)
         
-        filename = sprintf('data/K = %f, theta_1 = %f, M = %f.png', K, theta1 * 180 / pi, M);
+        filename = sprintf('data/K_%.1f_theta_%.1f_M_%.1f.png', K, theta1 * 180 / pi, M);
         saveas(fig, filename)
     end
 end
