@@ -12,7 +12,7 @@ n = 0.6;
 w1 = 1.5;
 w2 = M * w1;
 
-t = 0 : 0.1 : 30;
+t = 0 : 0.01 : 5;
 N = length(t);
 alpha1 = w1 * t + alpha1_init;
 alpha2 = w2 * t + alpha2_init;
